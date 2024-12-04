@@ -14,7 +14,7 @@ import {
 } from "../../api/slices/product.slice";
 import PropTypes from "prop-types";
 import Spinner from "../Spinner";
-import useSnackbar from "../../hooks/useSnackbar";
+import useSnackbar from "../../hooks/useSnackBar";
 
 const regexTEXT = /^[a-zA-Z0-9\s]*$/;
 const regexNUMBER = /^[0-9]*$/;
