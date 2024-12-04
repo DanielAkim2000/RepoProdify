@@ -13,7 +13,7 @@ import {
   useUpdateMutation,
 } from "../../api/slices/authSlice";
 import { useDispatch, useSelector } from "react-redux";
-import useSnackbar from "../../hooks/useSnackbar";
+import useSnackbar from "../../hooks/useSnackBar";
 import {
   logout,
   setAuthenticated,
