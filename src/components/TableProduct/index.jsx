@@ -121,8 +121,6 @@ const TableProducts = () => {
     setProductsSelected([]);
   };
 
-  console.log("productsSelected", productsSelected);
-
   // me permet de recharger les données à chaque fois que je change de page, de limite, de prix ou de catégorie
   useEffect(() => {
     // permet de déselectionner les produits sélectionnés si on change de page
@@ -241,7 +239,7 @@ const TableProducts = () => {
                     checked={productsSelected.includes(product.id)}
                   />
                 </TableCell>
-                <TableCell>{index + 1}</TableCell>
+                <TableCell>{product.id}</TableCell>
                 <TableCell>{product.name}</TableCell>
                 <TableCell>{`${product.price} €`}</TableCell>
                 <TableCell>{product.description}</TableCell>

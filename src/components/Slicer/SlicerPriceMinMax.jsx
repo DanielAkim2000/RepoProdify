@@ -134,7 +134,7 @@ const InputPriceFilter = () => {
             }`,
           },
         ]}
-        step={50}
+        step={parseInt(maxPriceLabel / 100)}
         disableSwap
       />
     </div>

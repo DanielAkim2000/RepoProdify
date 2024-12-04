@@ -35,6 +35,7 @@ import PropTypes from "prop-types";
 import useSnackBar from "../../hooks/useSnackBar";
 import Spinner from "../Spinner";
 import {
+  resetData,
   selectData,
   selectLimit,
   selectOffset,
@@ -311,8 +312,7 @@ const BtnSeeAllCategories = () => {
   // fermeture de la modal
   const handleClose = () => {
     setOpen(false);
-    dispatch(setOffset(0)); // réinitialiser l'offset
-    dispatch(setData([])); // réinitialiser les catégories
+    dispatch(resetData());
     setHasMore(true); // réinitialiser hasMore
     setPrevOffset(null); // réinitialiser prevOffset
     if (debounceTimer) {
