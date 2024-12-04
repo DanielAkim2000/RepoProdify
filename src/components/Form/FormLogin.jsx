@@ -39,6 +39,8 @@ import {
 import PropTypes from "prop-types";
 import { useState } from "react";
 
+const regexMail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
 const FormLogin = ({ handleCloseInfo = null }) => {
   const [register, { isLoading }] = useRegisterMutation();
   const [login, { isLoading: isLoadingLogin }] = useLoginMutation();
@@ -337,13 +339,12 @@ const FormLogin = ({ handleCloseInfo = null }) => {
     setType(type === "login" ? "register" : "login");
   };
 
+  document.addEventListener("keydown", (e) => {
+    console.log(e.key); // Vérifie si "m" déclenche quelque chose
+  });
+
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        handleSubmit();
-      }}
-    >
+    <form>
       <FormControl fullWidth>
         {(type === "register" || type === "info") && (
           <>
@@ -473,7 +474,7 @@ const FormLogin = ({ handleCloseInfo = null }) => {
           variant="contained"
           color="primary"
           fullWidth
-          type="submit"
+          onClick={handleSubmit}
           disabled={disabledBtn()}
           sx={{ mt: 4 }}
         >
@@ -491,7 +492,6 @@ const FormLogin = ({ handleCloseInfo = null }) => {
               <Button
                 color="primary"
                 onClick={(e) => {
-                  e.preventDefault();
                   handleChangeType();
                 }}
               >
