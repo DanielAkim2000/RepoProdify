@@ -22,7 +22,7 @@ import {
   Slide,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import {
   useDeleteProductsMutation,
   useSearchProductsQuery,
@@ -38,8 +38,6 @@ import {
 } from "../../redux/slices/searchData.slice";
 import Spinner from "../Spinner";
 import useSnackBar from "../../hooks/useSnackBar";
-import { useMeQuery } from "../../api/slices/authSlice";
-import { selectToken } from "../../redux/slices/auth.slice";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -86,11 +84,8 @@ const TableProducts = () => {
   );
   const [deleteProducts, { isLoading }] = useDeleteProductsMutation();
   const { openSnackbar } = useSnackBar();
-  const dispatch = useDispatch();
   const [productsSelected, setProductsSelected] = useState([]);
   const [openDialog, setOpenDialog] = useState(false);
-  const token = useSelector(selectToken);
-  const { data, refetch: refetchUseData, isSuccess } = useMeQuery();
 
   const handleChanged = (event) => {
     const { value, checked } = event.target;
@@ -222,7 +217,7 @@ const TableProducts = () => {
         <TableBody>
           {isFetching ? (
             <TableRow sx={{ justifyContent: "center" }}>
-              <TableCell colSpan={7} align="center">
+              <TableCell colSpan={8} align="center">
                 <CircularProgress />
               </TableCell>
             </TableRow>
