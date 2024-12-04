@@ -189,7 +189,7 @@ const TableProducts = () => {
                   >
                     <DialogTitle>
                       Voulez-vous vraiment supprimer tous les produits
-                      sélectionnés ?
+                      sélectionnés ? ( page entière aux maximum )
                     </DialogTitle>
                     <DialogContent>
                       <DialogContentText id="alert-dialog-slide-description">
@@ -276,8 +276,8 @@ const TableProducts = () => {
                     }}
                     onClick={(e) => handlePopoverOpen(e, product.description)}
                   >
-                    {product.description.length > 100
-                      ? `${product.description.slice(0, 100)}...`
+                    {product.description.length > 20
+                      ? `${product.description.slice(0, 20)}...`
                       : product.description}
                   </Typography>
                   <Popover
