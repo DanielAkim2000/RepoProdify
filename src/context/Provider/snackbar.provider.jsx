@@ -1,5 +1,5 @@
 import { Snackbar, styled } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { SnackbarContext } from "../snackbar.context";
 import PropTypes from "prop-types";
 
@@ -34,8 +34,13 @@ const SnackbarContextProvider = ({ children }) => {
     }
   }, [open]);
 
+  const contextValue = useMemo(
+    () => ({ openSnackbar, closeSnackbar }),
+    [openSnackbar, closeSnackbar]
+  );
+
   return (
-    <SnackbarContext.Provider value={{ openSnackbar, closeSnackbar }}>
+    <SnackbarContext.Provider value={contextValue}>
       {children}
       <StyledSnackbar
         open={open}

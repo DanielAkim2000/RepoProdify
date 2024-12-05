@@ -25,3 +25,6 @@ dist-ssr
 
 # environment
 .env
+.env.local
+.env.development
+.env.test
